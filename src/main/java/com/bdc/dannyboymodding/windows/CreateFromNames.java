@@ -105,6 +105,7 @@ public class CreateFromNames {
 
         // Browse button to open file chooser dialog
         Button browseButton = new Button("Browse...");
+        browseButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
         browseButton.setOnAction(e -> openDirectoryChooser());
 
         // Add label, and button to the HBox
@@ -112,7 +113,9 @@ public class CreateFromNames {
 
         // Create a "Generate Classes" button
         Button generateClassesButton = new Button("Generate Classes");
+        generateClassesButton.setPrefWidth(300);
         generateClassesButton.setOnAction(e -> generateClasses());
+        generateClassesButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
 
         // Add the top section (title), dropdown, input box, output path box, and generate button to the main VBox
         content.getChildren().addAll(topSection, dropdownBox, inputBox, outputPathBox, generateClassesButton);

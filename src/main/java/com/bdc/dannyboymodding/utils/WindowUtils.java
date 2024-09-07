@@ -1,8 +1,7 @@
 package com.bdc.dannyboymodding.utils;
 
 import com.bdc.dannyboymodding.Main;
-import com.bdc.dannyboymodding.windows.CreateAttributes;
-import com.bdc.dannyboymodding.windows.CreateFromNames;
+import com.bdc.dannyboymodding.windows.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -26,7 +25,7 @@ public class WindowUtils {
         StackPane dropdownContainer = (StackPane) root.getCenter();
 
         // Use the CreateFromNames class to generate the content
-        CreateAttributes createFromNames = new CreateAttributes();
+        CreateEntityReg createFromNames = new CreateEntityReg();
         VBox content = createFromNames.getView();
 
         // Clear the previous content and add the new one
