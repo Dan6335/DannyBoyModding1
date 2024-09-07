@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "${MOD_ID}:block/${TEXTURE_NAME}",
+    "top": "${MOD_ID}:block/${TEXTURE_NAME}",
+    "side": "${MOD_ID}:block/${TEXTURE_NAME}"
+  }
+}

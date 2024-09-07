@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title>Dan's Modding Tool</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #ffffff;
+        }
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            background-color: #2e2e2e;
+            padding-top: 20px;
+            position: fixed;
+        }
+        .sidebar button {
+            display: block;
+            width: 180px;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: #3e3e3e;
+            border: none;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: left;
+        }
+        .sidebar button:hover {
+            background-color: #4e4e4e;
+        }
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+            text-align: center;
+        }
+        .content h1 {
+            color: #1e90ff;
+        }
+        .dropdown {
+            display: none;
+            background-color: #3e3e3e;
+            position: absolute;
+            left: 200px;
+            width: 180px;
+            border: 1px solid #4e4e4e;
+        }
+        .dropdown button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3e3e3e;
+            border: none;
+            color: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: left;
+        }
+        .dropdown button:hover {
+            background-color: #4e4e4e;
+        }
+    </style>
+    <script>
+        function toggleDropdown(id) {
+            var dropdowns = document.getElementsByClassName("dropdown");
+            for (var i = 0; i < dropdowns.length; i++) {
+                if (dropdowns[i].id !== id) {
+                    dropdowns[i].style.display = "none";
+                }
+            }
+            var dropdown = document.getElementById(id);
+            if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                dropdown.style.display = "block";
+            } else {
+                dropdown.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="sidebar">
+    <button onclick="toggleDropdown('entityDropdown')">Create Entity</button>
+    <div id="entityDropdown" class="dropdown" style="top: 20px;">
+        <button>Option 1</button>
+        <button>Option 2</button>
+        <button>Option 3</button>
+    </div>
+    <button onclick="toggleDropdown('itemDropdown')">Create Item</button>
+    <div id="itemDropdown" class="dropdown" style="top: 40px;">
+        <button>Option 1</button>
+        <button>Option 2</button>
+        <button>Option 3</button>
+    </div>
+    <button onclick="toggleDropdown('blockDropdown')">Create Block</button>
+    <div id="blockDropdown" class="dropdown" style="top: 60px;">
+        <button>Option 1</button>
+        <button>Option 2</button>
+        <button>Option 3</button>
+    </div>
+</div>
+<div class="content">
+    <h1>Welcome to Dan's Modding Tool!</h1>
+    <p>With this tool, you will be able to automate your modding experience.<br>
+        Please select one of the options to the left to begin.</p>
+</div>
+</body>
+</html>

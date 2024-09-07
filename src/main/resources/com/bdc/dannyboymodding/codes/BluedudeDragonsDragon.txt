@@ -1,0 +1,60 @@
+package com.bdc.bdd.entity;
+
+import com.bdc.bdd.api.common.BddDragonEntity;
+import com.bdc.bdd.api.util.*;
+import com.bdc.bdd.config.BddConfig;
+import mod.bdc.bluelib.core.animation.AnimatableManager;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.common.ForgeMod;
+import org.jetbrains.annotations.Nullable;
+
+public class {class_name} extends BddDragonEntity implements {interface} {
+    public {class_name}(EntityType entityType, Level world) {
+        super(entityType, world);
+    }
+
+    @Override
+    protected Ingredient getTemptingItems() {
+        return Ingredient.of(Items.COD);
+    }
+
+    @Override
+    public String returnDragonType() {
+        return "";
+    }
+
+    //Adjust these as you need
+    public static AttributeSupplier.Builder bakeAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 100.0)
+                .add(Attributes.ARMOR_TOUGHNESS, 16.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.21)
+                .add(Attributes.FLYING_SPEED, 0.14)
+                .add(Attributes.ATTACK_DAMAGE, 8.0)
+                .add(ForgeMod.SWIM_SPEED.get(), 0.8F)
+                .add(Attributes.FOLLOW_RANGE, Math.min(2048, BddConfig.dragonTargetSearchLength))
+                .add(Attributes.ARMOR, 4);
+    }
+
+    @Override
+    public AttributeSupplier.Builder getConfigurableAttributes() {
+        return bakeAttributes();
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {}
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
+        return null;
+    }
+}
