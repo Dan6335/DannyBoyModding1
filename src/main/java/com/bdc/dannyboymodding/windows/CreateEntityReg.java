@@ -29,6 +29,10 @@ public class CreateEntityReg {
         content.setPadding(new Insets(20));
         content.setAlignment(Pos.CENTER);
 
+        Text title = new Text("Create Bluedude Dragons Dragon Registry:");
+        title.setFill(Color.web("#1e90ff"));
+        title.setStyle("-fx-font-size: 24px;");
+
         // File selection button
         Button selectFilesButton = new Button("Select .java Files");
         selectFilesButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
@@ -60,7 +64,7 @@ public class CreateEntityReg {
         generateButton.setPrefWidth(300);
         generateButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
 
-        content.getChildren().addAll(selectFilesButton, outputPathBox, generateButton);
+        content.getChildren().addAll(title, selectFilesButton, outputPathBox, generateButton);
         return content;
     }
 
