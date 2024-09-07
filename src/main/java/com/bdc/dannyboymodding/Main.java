@@ -1,17 +1,13 @@
 package com.bdc.dannyboymodding;
 
 import com.bdc.dannyboymodding.utils.WindowUtils;
-import com.bdc.dannyboymodding.windows.CreateFromNames;
 import javafx.application.*;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.web.*;
 import javafx.stage.*;
 
 public class Main extends Application {
@@ -58,24 +54,20 @@ public class Main extends Application {
         dropdown.setSpacing(5); // Reduced spacing for smaller dropdown
 
         Button createFromNames = new Button("Create From Names");
-        Button createAttributes = new Button("Create Attributes");
-        Button createRenders = new Button("Create Renders");
+        Button createAttributes = new Button("Create Bdd Entity");
 
         styleDropdownButton(createFromNames);
         styleDropdownButton(createAttributes);
-        styleDropdownButton(createRenders);
 
         // Set event handler for "Create From Names" to open the new class
         createFromNames.setOnAction(e -> WindowUtils.showCreateFromNames());
-        createAttributes.setOnAction(e -> WindowUtils.showcreateAttributes());
-        createRenders.setOnAction(e -> WindowUtils.showcreateRenders());
+        createAttributes.setOnAction(e -> WindowUtils.showCreateBddEntityReg());
 
-        dropdown.getChildren().addAll(createFromNames, createAttributes, createRenders);
+        dropdown.getChildren().addAll(createFromNames, createAttributes);
         dropdown.setMaxWidth(160); // Set max width to fit around the buttons
         createFromNames.setMaxWidth(160); // Set max width to fit around the buttons
         createAttributes.setMaxWidth(160);
-        createRenders.setMaxWidth(160);
-        dropdown.setMaxHeight(100); // Set max height to fit around the buttons
+        dropdown.setMaxHeight(60); // Set max height to fit around the buttons
         return dropdown;
     }
 
