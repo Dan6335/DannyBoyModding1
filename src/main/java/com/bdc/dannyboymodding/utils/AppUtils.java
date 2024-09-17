@@ -116,4 +116,8 @@ public class AppUtils {
                 .map(part -> Character.toUpperCase(part.charAt(0)) + part.substring(1).toLowerCase())
                 .collect(Collectors.joining());
     }
+
+    public static String toLowerCaseWithUnderscores(String input) {
+        return input.trim().toLowerCase().replaceAll("\\s+", "_");
+    }
 }

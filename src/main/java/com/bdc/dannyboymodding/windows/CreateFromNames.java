@@ -117,6 +117,21 @@ public class CreateFromNames extends VBox{
                 showAlert(Alert.AlertType.ERROR, "Error", "Please select a valid entity type.");
                 break;
         }
+
+        // Show success alert with OK button
+        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+        successAlert.setTitle("Success");
+        successAlert.setHeaderText(null);
+        successAlert.setContentText("Successfully Generated Entity Class.");
+
+        // When OK is pressed, reset the fields
+        successAlert.setOnHidden(evt -> {
+            outputPathLable.setText("Select output folder");
+            nameField.clear();
+            entityTypeComboBox.setValue(null);
+        });
+
+        successAlert.showAndWait();
     }
 
     private void generateJurassiCraftClasses() {

@@ -94,8 +94,8 @@ public class CreateItemModels extends VBox {
 
     private void generateItemModel() {
         String fileContent = loadResourceFile("items/ItemModel.txt");
-        List<String> names = Arrays.stream(nameField.getText().split(",")).map(String::trim).toList();
-        List<String> modIDF = Arrays.stream(modIdField.getText().split(",")).map(String::trim).toList();
+        List<String> names = Arrays.stream(nameField.getText().split(",")).map(AppUtils::toLowerCaseWithUnderscores).map(String::trim).toList();
+        List<String> modIDF = Arrays.stream(modIdField.getText().split(",")).map(AppUtils::toLowerCaseWithUnderscores).map(String::trim).toList();
 
         if (fileContent != null) {
             for (int i = 0; i < names.size(); i++) {
@@ -114,5 +114,20 @@ public class CreateItemModels extends VBox {
                 }
             }
         }
+
+        // Show success alert with OK button
+        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+        successAlert.setTitle("Success");
+        successAlert.setHeaderText(null);
+        successAlert.setContentText("Successfully Generated Entity Class.");
+
+        // When OK is pressed, reset the fields
+        successAlert.setOnHidden(evt -> {
+            outputPathLable.setText("Select output folder");
+            nameField.clear();
+            modIdField.clear();
+        });
+
+        successAlert.showAndWait();
     }
 }
