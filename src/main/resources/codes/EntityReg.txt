@@ -1,0 +1,6 @@
+    public static final EntityEntry<{class_name}> {uppercase_name} = REGISTRATE
+            .entity("{lowercase_name}", {class_name}::new, MobCategory.CREATURE)
+            .properties(properties -> properties.sized(1.4F, 2.0F))
+            .attributes({class_name}::bakeAttributes)
+            .renderer(() -> Render{render_name}::new)
+            .register();

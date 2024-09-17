@@ -75,7 +75,7 @@ public class CreateEntityReg extends VBox {
             return;
         }
 
-        String entityRegCode = loadResourceFile("BluedudeDragonsReg.txt");
+        String entityRegCode = loadResourceFile("EntityReg.txt");
         if (entityRegCode == null) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to get entity registration code.");
             return;
