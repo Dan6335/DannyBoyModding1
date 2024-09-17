@@ -21,7 +21,7 @@ import java.util.List;
 public class AppUtils {
     public static Label outputPathLable = new Label("Select output folder");
     public static Stage primaryStage;
-    public static String codesDir = "com/bdc/dannyboymodding/codes/";
+    public static String codesDir = "codes/";
     public static List<String> selectedClassNames = new ArrayList<>();
 
 
