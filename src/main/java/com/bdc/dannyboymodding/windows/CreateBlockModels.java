@@ -89,7 +89,7 @@ public class CreateBlockModels extends VBox {
         outputPathLable.setPrefHeight(20);
         outputPathLable.setAlignment(Pos.CENTER);
 
-        Button generateButton = new Button("Generate Block Models");
+        Button generateButton = new Button("Generate Item Models");
         generateButton.setOnAction(e -> generateBlockModels());
         generateButton.setPrefWidth(300);
         generateButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
