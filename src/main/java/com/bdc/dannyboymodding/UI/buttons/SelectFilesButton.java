@@ -20,9 +20,9 @@ import static com.bdc.dannyboymodding.utils.AppUtils.selectedClassNames;
 public class SelectFilesButton extends Button {
     private final FileTypes fileType;
 
-    public SelectFilesButton(FileTypes fileType, String text) {
-        super(text);
-        this.fileType = fileType;
+    public SelectFilesButton(FileTypes pFileType, String pText) {
+        super(pText);
+        this.fileType = pFileType;
         setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
         setPrefWidth(300);
         setOnAction(e -> openFileChooser());
@@ -39,7 +39,7 @@ public class SelectFilesButton extends Button {
         }
     }
 
-    private void showCheckboxDialog(List<File> files) {
+    private void showCheckboxDialog(List<File> pFiles) {
         Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle("Select Entries");
@@ -48,7 +48,7 @@ public class SelectFilesButton extends Button {
         vbox.setPadding(new Insets(20));
 
         List<CheckBox> checkBoxes = new ArrayList<>();
-        for (File file : files) {
+        for (File file : pFiles) {
             String fileName = file.getName();
             String className = fileName.replace("." + getFileExtension(file), "");
             CheckBox checkBox = new CheckBox(className);
@@ -72,8 +72,8 @@ public class SelectFilesButton extends Button {
         dialog.showAndWait();
     }
 
-    private String getFileExtension(File file) {
-        String name = file.getName();
+    private String getFileExtension(File pFile) {
+        String name = pFile.getName();
         return name.substring(name.lastIndexOf(".") + 1);
     }
 }

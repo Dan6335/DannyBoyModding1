@@ -4,7 +4,7 @@ import com.bdc.dannyboymodding.UI.buttons.BrowseButton;
 import com.bdc.dannyboymodding.UI.buttons.OutputPathBox;
 import com.bdc.dannyboymodding.UI.buttons.SelectFilesButton;
 import com.bdc.dannyboymodding.utils.FileTypes;
-import com.bdc.dannyboymodding.utils.NewInsets;
+import com.bdc.dannyboymodding.utils.CustomInsets;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -57,7 +57,7 @@ public class CreateEntityReg extends VBox {
         generateButton.setPrefWidth(300);
         generateButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
 
-        VBox.setMargin(outputPathBox, new NewInsets(10, 90, 0, 0));
+        VBox.setMargin(outputPathBox, new CustomInsets(10, 90, 0, 0));
         VBox.setMargin(generateButton, new Insets(10, 0, 0, 0));
 
         this.getChildren().addAll(topSection, outputPathBox, generateButton);

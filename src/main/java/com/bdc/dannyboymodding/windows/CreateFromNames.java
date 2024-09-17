@@ -3,7 +3,7 @@ package com.bdc.dannyboymodding.windows;
 import com.bdc.dannyboymodding.UI.buttons.BrowseButton;
 import com.bdc.dannyboymodding.UI.buttons.OutputPathBox;
 import com.bdc.dannyboymodding.utils.AppUtils;
-import com.bdc.dannyboymodding.utils.NewInsets;
+import com.bdc.dannyboymodding.utils.CustomInsets;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -53,12 +53,12 @@ public class CreateFromNames extends VBox{
         entityTypeComboBox.getItems().addAll("JurassiCraft Dinosaur", "Bluedude Dragons Dragon", "Custom Entity(WIP)");
         entityTypeComboBox.setPrefWidth(300);
         dropdownBox.getChildren().addAll(dropdownLabel, entityTypeComboBox);
-        VBox.setMargin(dropdownBox, new NewInsets(-10, 0, 0, 0));
+        VBox.setMargin(dropdownBox, new CustomInsets(-10, 0, 0, 0));
 
         HBox namesBox = new HBox();
         namesBox.setSpacing(4);
         namesBox.setAlignment(Pos.CENTER);
-        VBox.setMargin(namesBox, new NewInsets(-10, 0, 0, -52));
+        VBox.setMargin(namesBox, new CustomInsets(-10, 0, 0, -52));
         Text label = new Text("Names (comma-separated):");
         label.setFill(Color.WHITE);
         label.setStyle("-fx-font-size: 14px;");
@@ -88,10 +88,10 @@ public class CreateFromNames extends VBox{
         generateClassesButton.setOnAction(e -> generateClasses());
         generateClassesButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
 
-        VBox.setMargin(dropdownBox, new NewInsets(-10, 0, 0, -50));
-        VBox.setMargin(namesBox, new NewInsets(-10, 0, 0, -100));
-        VBox.setMargin(outputPathBox, new NewInsets(-10, 0, 0, -5));
-        VBox.setMargin(generateClassesButton, new NewInsets(-10, 0, 0, 0));
+        VBox.setMargin(dropdownBox, new CustomInsets(-10, 0, 0, -50));
+        VBox.setMargin(namesBox, new CustomInsets(-10, 0, 0, -100));
+        VBox.setMargin(outputPathBox, new CustomInsets(-10, 0, 0, -5));
+        VBox.setMargin(generateClassesButton, new CustomInsets(-10, 0, 0, 0));
         this.getChildren().addAll(topSection, dropdownBox, namesBox, outputPathBox, generateClassesButton);
     }
 

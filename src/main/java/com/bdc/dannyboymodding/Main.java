@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) {
-        AppUtils.primaryStage = primaryStage;
+    public void start(Stage pPrimaryStage) {
+        AppUtils.primaryStage = pPrimaryStage;
         BorderPane root = new BorderPane();
         root.setLeft(new Sidebar());
         StackPane dropdownContainer = new StackPane();
@@ -41,9 +41,9 @@ public class Main extends Application {
         root.setCenter(dropdownContainer);
 
         Scene scene = new Scene(root, 800, 600);
-        primaryStage.setTitle("Dan's Modding Tool");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        pPrimaryStage.setTitle("Dan's Modding Tool");
+        pPrimaryStage.setScene(scene);
+        pPrimaryStage.show();
     }
 
     public static void main(String[] args) {

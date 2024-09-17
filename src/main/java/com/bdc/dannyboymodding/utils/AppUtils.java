@@ -28,7 +28,6 @@ public class AppUtils {
     public static String codesDir = "codes/";
     public static List<String> selectedClassNames = new ArrayList<>();
 
-
     public static void openDirectoryChooser() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select Output Folder");

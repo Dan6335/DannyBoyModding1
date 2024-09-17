@@ -3,7 +3,7 @@ package com.bdc.dannyboymodding.windows;
 import com.bdc.dannyboymodding.UI.buttons.BrowseButton;
 import com.bdc.dannyboymodding.UI.buttons.OutputPathBox;
 import com.bdc.dannyboymodding.utils.AppUtils;
-import com.bdc.dannyboymodding.utils.NewInsets;
+import com.bdc.dannyboymodding.utils.CustomInsets;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -53,7 +53,7 @@ public class CreateBlockModels extends VBox {
                 "Log Block", "Stairs Block");
         entityTypeComboBox.setPrefWidth(300);
         dropdownBox.getChildren().addAll(dropdownLabel, entityTypeComboBox);
-        VBox.setMargin(dropdownBox, new NewInsets(-10, 0, 0, 0));
+        VBox.setMargin(dropdownBox, new CustomInsets(-10, 0, 0, 0));
 
         HBox namesBox = new HBox();
         namesBox.setSpacing(4);
@@ -98,11 +98,11 @@ public class CreateBlockModels extends VBox {
         OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0, 4);
         outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLable, browseButton);
 
-        VBox.setMargin(namesBox, new NewInsets(10, 0, 0, -130));
-        VBox.setMargin(modIdBox, new NewInsets(10, 0, 0, -209));
-        VBox.setMargin(outputPathBox, new NewInsets(10, 0, 0, -45));
-        VBox.setMargin(generateButton, new NewInsets(10, 0, 0, 0));
-        VBox.setMargin(dropdownBox, new NewInsets(10, 0, 0, -75));
+        VBox.setMargin(namesBox, new CustomInsets(10, 0, 0, -130));
+        VBox.setMargin(modIdBox, new CustomInsets(10, 0, 0, -209));
+        VBox.setMargin(outputPathBox, new CustomInsets(10, 0, 0, -45));
+        VBox.setMargin(generateButton, new CustomInsets(10, 0, 0, 0));
+        VBox.setMargin(dropdownBox, new CustomInsets(10, 0, 0, -75));
 
         this.getChildren().addAll(topSection, dropdownBox, namesBox, modIdBox, outputPathBox, generateButton);
     }

@@ -5,9 +5,9 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 
 public class OutputPathBox extends HBox {
-    public OutputPathBox(int top, int left, int bottom, int right, int spacing) {
-        setSpacing(spacing);
+    public OutputPathBox(int pTop, int pLeft, int pBottom, int pRight, int pSpacing) {
+        setSpacing(pSpacing);
         setAlignment(Pos.CENTER);
-        setMargin(this, new Insets(top, left, bottom, right));
+        setMargin(this, new Insets(pTop, pLeft, pBottom, pRight));
     }
 }

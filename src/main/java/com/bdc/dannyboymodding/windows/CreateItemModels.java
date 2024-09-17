@@ -3,7 +3,7 @@ package com.bdc.dannyboymodding.windows;
 import com.bdc.dannyboymodding.UI.buttons.BrowseButton;
 import com.bdc.dannyboymodding.UI.buttons.OutputPathBox;
 import com.bdc.dannyboymodding.utils.AppUtils;
-import com.bdc.dannyboymodding.utils.NewInsets;
+import com.bdc.dannyboymodding.utils.CustomInsets;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -84,10 +84,10 @@ public class CreateItemModels extends VBox {
         OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0, 4);
         outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLable, browseButton);
 
-        VBox.setMargin(namesBox, new NewInsets(10, 0, 0, -130));
-        VBox.setMargin(modIdBox, new NewInsets(10, 0, 0, -209));
-        VBox.setMargin(outputPathBox, new NewInsets(10, 0, 0, -45));
-        VBox.setMargin(generateButton, new NewInsets(10, 0, 0, 0));
+        VBox.setMargin(namesBox, new CustomInsets(10, 0, 0, -130));
+        VBox.setMargin(modIdBox, new CustomInsets(10, 0, 0, -209));
+        VBox.setMargin(outputPathBox, new CustomInsets(10, 0, 0, -45));
+        VBox.setMargin(generateButton, new CustomInsets(10, 0, 0, 0));
 
         this.getChildren().addAll(topSection, namesBox, modIdBox, outputPathBox, generateButton);
     }

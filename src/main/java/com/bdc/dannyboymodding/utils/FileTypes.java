@@ -10,9 +10,9 @@ public enum FileTypes {
     private final String description;
     private final String extension;
 
-    FileTypes(String description, String extension) {
-        this.description = description;
-        this.extension = extension;
+    FileTypes(String pDescription, String pExtension) {
+        this.description = pDescription;
+        this.extension = pExtension;
     }
 
     public String getDescription() {

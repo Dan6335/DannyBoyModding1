@@ -11,35 +11,26 @@ import javafx.scene.layout.VBox;
 import static com.bdc.dannyboymodding.utils.AppUtils.primaryStage;
 
 public class WindowUtils {
-    public static void showCreateFromNames() {
+    private static void showContent(VBox pContent) {
         BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
         StackPane dropdownContainer = (StackPane) root.getCenter();
-        VBox content = new CreateFromNames();
         dropdownContainer.getChildren().clear();
-        dropdownContainer.getChildren().add(content);
+        dropdownContainer.getChildren().add(pContent);
+    }
+
+    public static void showCreateFromNames() {
+        showContent(new CreateFromNames());
     }
 
     public static void showCreateBddEntityReg() {
-        BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
-        StackPane dropdownContainer = (StackPane) root.getCenter();
-        VBox content = new CreateEntityReg();
-        dropdownContainer.getChildren().clear();
-        dropdownContainer.getChildren().add(content);
+        showContent(new CreateEntityReg());
     }
 
     public static void showCreateItemModels() {
-        BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
-        StackPane dropdownContainer = (StackPane) root.getCenter();
-        VBox content = new CreateItemModels();
-        dropdownContainer.getChildren().clear();
-        dropdownContainer.getChildren().add(content);
+        showContent(new CreateItemModels());
     }
 
     public static void showCreateBlockModels() {
-        BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
-        StackPane dropdownContainer = (StackPane) root.getCenter();
-        VBox content = new CreateBlockModels();
-        dropdownContainer.getChildren().clear();
-        dropdownContainer.getChildren().add(content);
+        showContent(new CreateBlockModels());
     }
 }
