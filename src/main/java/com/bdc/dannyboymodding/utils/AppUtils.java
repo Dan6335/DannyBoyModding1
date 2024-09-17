@@ -21,7 +21,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class AppUtils {
     public static Label outputPathLabel = new Label("Select output folder");
     public static Stage primaryStage;
@@ -38,29 +37,29 @@ public class AppUtils {
         }
     }
 
-    public static void styleDropdownButton(Button button) {
-        button.setPrefWidth(120);
-        button.setPrefHeight(25);
-        button.setBackground(new Background(new BackgroundFill(Color.web("#3e3e3e"), CornerRadii.EMPTY, Insets.EMPTY)));
-        button.setTextFill(Color.WHITE);
-        button.setStyle("-fx-font-size: 12px; -fx-cursor: hand; -fx-alignment: center-left;");
-        button.setOnMouseEntered(e -> button.setBackground(new Background(new BackgroundFill(Color.web("#4e4e4e"), CornerRadii.EMPTY, Insets.EMPTY))));
-        button.setOnMouseExited(e -> button.setBackground(new Background(new BackgroundFill(Color.web("#3e3e3e"), CornerRadii.EMPTY, Insets.EMPTY))));
+    public static void styleDropdownButton(Button pButton) {
+        pButton.setPrefWidth(120);
+        pButton.setPrefHeight(25);
+        pButton.setBackground(new Background(new BackgroundFill(Color.web("#3e3e3e"), CornerRadii.EMPTY, Insets.EMPTY)));
+        pButton.setTextFill(Color.WHITE);
+        pButton.setStyle("-fx-font-size: 12px; -fx-cursor: hand; -fx-alignment: center-left;");
+        pButton.setOnMouseEntered(e -> pButton.setBackground(new Background(new BackgroundFill(Color.web("#4e4e4e"), CornerRadii.EMPTY, Insets.EMPTY))));
+        pButton.setOnMouseExited(e -> pButton.setBackground(new Background(new BackgroundFill(Color.web("#3e3e3e"), CornerRadii.EMPTY, Insets.EMPTY))));
     }
 
-    public static void styleButton(Button button) {
-        button.setPrefWidth(160);
-        button.setPrefHeight(35);
-        button.setBackground(new Background(new BackgroundFill(Color.web("#3e3e3e"), CornerRadii.EMPTY, Insets.EMPTY)));
-        button.setTextFill(Color.WHITE);
-        button.setStyle("-fx-font-size: 14px; -fx-cursor: hand; -fx-alignment: center-left;"); // Further reduced font size
-        button.setOnMouseEntered(e -> button.setBackground(new Background(new BackgroundFill(Color.web("#4e4e4e"), CornerRadii.EMPTY, Insets.EMPTY))));
-        button.setOnMouseExited(e -> button.setBackground(new Background(new BackgroundFill(Color.web("#3e3e3e"), CornerRadii.EMPTY, Insets.EMPTY))));
+    public static void styleButton(Button pButton) {
+        pButton.setPrefWidth(160);
+        pButton.setPrefHeight(35);
+        pButton.setBackground(new Background(new BackgroundFill(Color.web("#3e3e3e"), CornerRadii.EMPTY, Insets.EMPTY)));
+        pButton.setTextFill(Color.WHITE);
+        pButton.setStyle("-fx-font-size: 14px; -fx-cursor: hand; -fx-alignment: center-left;"); // Further reduced font size
+        pButton.setOnMouseEntered(e -> pButton.setBackground(new Background(new BackgroundFill(Color.web("#4e4e4e"), CornerRadii.EMPTY, Insets.EMPTY))));
+        pButton.setOnMouseExited(e -> pButton.setBackground(new Background(new BackgroundFill(Color.web("#3e3e3e"), CornerRadii.EMPTY, Insets.EMPTY))));
     }
 
-    public static void toggleDropdown(String dropdownId) {
+    public static void toggleDropdown(String pDropdown) {
         VBox dropdown = null;
-        Insets margin = switch (dropdownId) {
+        Insets margin = switch (pDropdown) {
             case "entityDropdown" -> {
                 dropdown = new EntityDropdown(true);
                 yield new Insets(-10, 0, 0, -15);
@@ -103,28 +102,28 @@ public class AppUtils {
         }
     }
 
-    public static void showAlert(Alert.AlertType type, String title, String message) {
-        Alert alert = new Alert(type, message, ButtonType.OK);
-        alert.setTitle(title);
+    public static void showAlert(Alert.AlertType pType, String pTitle, String pMessage) {
+        Alert alert = new Alert(pType, pMessage, ButtonType.OK);
+        alert.setTitle(pTitle);
         alert.setHeaderText(null);
         alert.showAndWait();
     }
 
-    public static String toPascalCase(String name) {
-        return Arrays.stream(name.split("\\s+"))
+    public static String toPascalCase(String pName) {
+        return Arrays.stream(pName.split("\\s+"))
                 .map(part -> Character.toUpperCase(part.charAt(0)) + part.substring(1).toLowerCase())
                 .collect(Collectors.joining());
     }
 
-    public static String toLowerCaseWithUnderscores(String input) {
-        return input.trim().toLowerCase().replaceAll("\\s+", "_");
+    public static String toLowerCaseWithUnderscores(String pInput) {
+        return pInput.trim().toLowerCase().replaceAll("\\s+", "_");
     }
 
     public static void writeToFile(File file, String content) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(content);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException eException) {
+            eException.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to write file: " + file.getAbsolutePath());
         }
     }
