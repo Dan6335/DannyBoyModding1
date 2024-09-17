@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 
 public class AppUtils {
-    public static Label outputPathLable = new Label("Select output folder");
+    public static Label outputPathLabel = new Label("Select output folder");
     public static Stage primaryStage;
     public static String codesDir = "codes/";
     public static List<String> selectedClassNames = new ArrayList<>();
@@ -31,10 +31,10 @@ public class AppUtils {
     public static void openDirectoryChooser() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select Output Folder");
-        Window stage = outputPathLable.getScene().getWindow();
+        Window stage = outputPathLabel.getScene().getWindow();
         File selectedDirectory = directoryChooser.showDialog(stage);
         if (selectedDirectory != null) {
-            outputPathLable.setText(selectedDirectory.getAbsolutePath());
+            outputPathLabel.setText(selectedDirectory.getAbsolutePath());
         }
     }
 

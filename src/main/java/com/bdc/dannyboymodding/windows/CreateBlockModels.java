@@ -83,11 +83,11 @@ public class CreateBlockModels extends VBox {
         outputPathLabelText.setFill(Color.WHITE);
         outputPathLabelText.setStyle("-fx-font-size: 14px;");
 
-        outputPathLable.setText("Select output folder");
-        outputPathLable.setStyle("-fx-background-color: #2e2e2e; -fx-text-fill: white;");
-        outputPathLable.setPrefWidth(225);
-        outputPathLable.setPrefHeight(20);
-        outputPathLable.setAlignment(Pos.CENTER);
+        outputPathLabel.setText("Select output folder");
+        outputPathLabel.setStyle("-fx-background-color: #2e2e2e; -fx-text-fill: white;");
+        outputPathLabel.setPrefWidth(225);
+        outputPathLabel.setPrefHeight(20);
+        outputPathLabel.setAlignment(Pos.CENTER);
 
         Button generateButton = new Button("Generate Item Models");
         generateButton.setOnAction(e -> generateBlockModels());
@@ -96,7 +96,7 @@ public class CreateBlockModels extends VBox {
 
         BrowseButton browseButton = new BrowseButton("Browse...");
         OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0, 4);
-        outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLable, browseButton);
+        outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLabel, browseButton);
 
         VBox.setMargin(namesBox, new CustomInsets(10, 0, 0, -130));
         VBox.setMargin(modIdBox, new CustomInsets(10, 0, 0, -209));
@@ -109,7 +109,7 @@ public class CreateBlockModels extends VBox {
 
     private void generateBlockModels() {
         String selectedEntityType = entityTypeComboBox.getValue();
-        String outputPath = outputPathLable.getText();
+        String outputPath = outputPathLabel.getText();
         if (outputPath == null || outputPath.isEmpty() || "Select output folder".equals(outputPath)) {
             showAlert(Alert.AlertType.ERROR, "Error", "Please select a valid output folder.");
             return;
@@ -147,7 +147,7 @@ public class CreateBlockModels extends VBox {
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Entity Class.");
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             nameField.clear();
             entityTypeComboBox.setValue(null);
         });
@@ -166,7 +166,7 @@ public class CreateBlockModels extends VBox {
                 String updatedContent = fileContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
 
-                File outputFile = new File(outputPathLable.getText(), name + ".json");
+                File outputFile = new File(outputPathLabel.getText(), name + ".json");
 
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                     writer.write(updatedContent);
@@ -182,7 +182,7 @@ public class CreateBlockModels extends VBox {
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Entity Class.");
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             nameField.clear();
             modIdField.clear();
             entityTypeComboBox.setValue(null);
@@ -202,7 +202,7 @@ public class CreateBlockModels extends VBox {
                 String updatedContent = fileContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
 
-                File outputFile = new File(outputPathLable.getText(), name + ".json");
+                File outputFile = new File(outputPathLabel.getText(), name + ".json");
 
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                     writer.write(updatedContent);
@@ -218,7 +218,7 @@ public class CreateBlockModels extends VBox {
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Entity Class.");
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             nameField.clear();
             modIdField.clear();
             entityTypeComboBox.setValue(null);
@@ -247,17 +247,17 @@ public class CreateBlockModels extends VBox {
 
                 String verticalFileContent = fenceGateContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File verticalOutputFile = new File(outputPathLable.getText(), name + ".json");
+                File verticalOutputFile = new File(outputPathLabel.getText(), name + ".json");
                 writeToFile(verticalOutputFile, verticalFileContent);
 
                 String horizontalFileContent = fenceGateOpenContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File horizontalOutputFile = new File(outputPathLable.getText(), name + "_open.json");
+                File horizontalOutputFile = new File(outputPathLabel.getText(), name + "_open.json");
                 writeToFile(horizontalOutputFile, horizontalFileContent);
 
                 String sideFileContent = fenceGateWallContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File sideOutputFile = new File(outputPathLable.getText(), name + "_wall.json");
+                File sideOutputFile = new File(outputPathLabel.getText(), name + "_wall.json");
                 writeToFile(sideOutputFile, sideFileContent);
             }
         }
@@ -267,7 +267,7 @@ public class CreateBlockModels extends VBox {
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Fence Gate Block Files.");
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             nameField.clear();
             modIdField.clear();
             entityTypeComboBox.setValue(null);
@@ -296,17 +296,17 @@ public class CreateBlockModels extends VBox {
 
                 String verticalFileContent = fenceContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File verticalOutputFile = new File(outputPathLable.getText(), name + ".json");
+                File verticalOutputFile = new File(outputPathLabel.getText(), name + ".json");
                 writeToFile(verticalOutputFile, verticalFileContent);
 
                 String horizontalFileContent = fencePostContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File horizontalOutputFile = new File(outputPathLable.getText(), name + "_open.json");
+                File horizontalOutputFile = new File(outputPathLabel.getText(), name + "_open.json");
                 writeToFile(horizontalOutputFile, horizontalFileContent);
 
                 String sideFileContent = fenceSideContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File sideOutputFile = new File(outputPathLable.getText(), name + "_wall.json");
+                File sideOutputFile = new File(outputPathLabel.getText(), name + "_wall.json");
                 writeToFile(sideOutputFile, sideFileContent);
             }
         }
@@ -316,7 +316,7 @@ public class CreateBlockModels extends VBox {
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Fence Gate Block Files.");
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             nameField.clear();
             modIdField.clear();
             entityTypeComboBox.setValue(null);
@@ -344,12 +344,12 @@ public class CreateBlockModels extends VBox {
 
                 String verticalFileContent = slabContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File verticalOutputFile = new File(outputPathLable.getText(), name + ".json");
+                File verticalOutputFile = new File(outputPathLabel.getText(), name + ".json");
                 writeToFile(verticalOutputFile, verticalFileContent);
 
                 String horizontalFileContent = slabTopContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File horizontalOutputFile = new File(outputPathLable.getText(), name + "_open.json");
+                File horizontalOutputFile = new File(outputPathLabel.getText(), name + "_open.json");
                 writeToFile(horizontalOutputFile, horizontalFileContent);
             }
         }
@@ -359,7 +359,7 @@ public class CreateBlockModels extends VBox {
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Fence Gate Block Files.");
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             nameField.clear();
             modIdField.clear();
             entityTypeComboBox.setValue(null);
@@ -387,12 +387,12 @@ public class CreateBlockModels extends VBox {
 
                 String verticalFileContent = logBlockContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File verticalOutputFile = new File(outputPathLable.getText(), name + ".json");
+                File verticalOutputFile = new File(outputPathLabel.getText(), name + ".json");
                 writeToFile(verticalOutputFile, verticalFileContent);
 
                 String horizontalFileContent = logBlockHorizContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File horizontalOutputFile = new File(outputPathLable.getText(), name + "_open.json");
+                File horizontalOutputFile = new File(outputPathLabel.getText(), name + "_open.json");
                 writeToFile(horizontalOutputFile, horizontalFileContent);
             }
         }
@@ -402,7 +402,7 @@ public class CreateBlockModels extends VBox {
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Log Block Files.");
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             nameField.clear();
             modIdField.clear();
             entityTypeComboBox.setValue(null);
@@ -431,17 +431,17 @@ public class CreateBlockModels extends VBox {
 
                 String verticalFileContent = stairsContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File verticalOutputFile = new File(outputPathLable.getText(), name + ".json");
+                File verticalOutputFile = new File(outputPathLabel.getText(), name + ".json");
                 writeToFile(verticalOutputFile, verticalFileContent);
 
                 String horizontalFileContent = stairsInnerContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File horizontalOutputFile = new File(outputPathLable.getText(), name + "_open.json");
+                File horizontalOutputFile = new File(outputPathLabel.getText(), name + "_open.json");
                 writeToFile(horizontalOutputFile, horizontalFileContent);
 
                 String sideFileContent = stairsOuterContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
-                File sideOutputFile = new File(outputPathLable.getText(), name + "_wall.json");
+                File sideOutputFile = new File(outputPathLabel.getText(), name + "_wall.json");
                 writeToFile(sideOutputFile, sideFileContent);
             }
         }
@@ -451,7 +451,7 @@ public class CreateBlockModels extends VBox {
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Fence Gate Block Files.");
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             nameField.clear();
             modIdField.clear();
             entityTypeComboBox.setValue(null);

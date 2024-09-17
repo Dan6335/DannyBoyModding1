@@ -69,11 +69,11 @@ public class CreateItemModels extends VBox {
         outputPathLabelText.setFill(Color.WHITE);
         outputPathLabelText.setStyle("-fx-font-size: 14px;");
 
-        outputPathLable.setText("Select output folder");
-        outputPathLable.setStyle("-fx-background-color: #2e2e2e; -fx-text-fill: white;");
-        outputPathLable.setPrefWidth(225);
-        outputPathLable.setPrefHeight(20);
-        outputPathLable.setAlignment(Pos.CENTER);
+        outputPathLabel.setText("Select output folder");
+        outputPathLabel.setStyle("-fx-background-color: #2e2e2e; -fx-text-fill: white;");
+        outputPathLabel.setPrefWidth(225);
+        outputPathLabel.setPrefHeight(20);
+        outputPathLabel.setAlignment(Pos.CENTER);
 
         Button generateButton = new Button("Generate Item Models");
         generateButton.setOnAction(e -> generateItemModel());
@@ -82,7 +82,7 @@ public class CreateItemModels extends VBox {
 
         BrowseButton browseButton = new BrowseButton("Browse...");
         OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0, 4);
-        outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLable, browseButton);
+        outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLabel, browseButton);
 
         VBox.setMargin(namesBox, new CustomInsets(10, 0, 0, -130));
         VBox.setMargin(modIdBox, new CustomInsets(10, 0, 0, -209));
@@ -104,7 +104,7 @@ public class CreateItemModels extends VBox {
                 String updatedContent = fileContent.replace("{texture_name}", name)
                         .replace("{mod_id}", modID);
 
-                File outputFile = new File(outputPathLable.getText(), name + ".json");
+                File outputFile = new File(outputPathLabel.getText(), name + ".json");
 
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                     writer.write(updatedContent);
@@ -121,7 +121,7 @@ public class CreateItemModels extends VBox {
         successAlert.setContentText("Successfully Generated Entity Class.");
 
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             nameField.clear();
             modIdField.clear();
         });

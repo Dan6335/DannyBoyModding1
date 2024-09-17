@@ -73,15 +73,15 @@ public class CreateFromNames extends VBox{
         outputPathLabelText.setFill(Color.WHITE);
         outputPathLabelText.setStyle("-fx-font-size: 14px;");
 
-        outputPathLable.setText("Select output folder");
-        outputPathLable.setStyle("-fx-background-color: #2e2e2e; -fx-text-fill: white;");
-        outputPathLable.setPrefWidth(235);
-        outputPathLable.setPrefHeight(20);
-        outputPathLable.setAlignment(Pos.CENTER);
+        outputPathLabel.setText("Select output folder");
+        outputPathLabel.setStyle("-fx-background-color: #2e2e2e; -fx-text-fill: white;");
+        outputPathLabel.setPrefWidth(235);
+        outputPathLabel.setPrefHeight(20);
+        outputPathLabel.setAlignment(Pos.CENTER);
 
         BrowseButton browseButton = new BrowseButton("Browse...");
 
-        outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLable, browseButton);
+        outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLabel, browseButton);
 
         Button generateClassesButton = new Button("Generate Classes");
         generateClassesButton.setPrefWidth(300);
@@ -97,7 +97,7 @@ public class CreateFromNames extends VBox{
 
     private void generateClasses() {
         String selectedEntityType = entityTypeComboBox.getValue();
-        String outputPath = outputPathLable.getText();
+        String outputPath = outputPathLabel.getText();
         if (outputPath == null || outputPath.isEmpty() || "Select output folder".equals(outputPath)) {
             showAlert(Alert.AlertType.ERROR, "Error", "Please select a valid output folder.");
             return;
@@ -120,7 +120,7 @@ public class CreateFromNames extends VBox{
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Entity Class.");
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             nameField.clear();
             entityTypeComboBox.setValue(null);
         });
@@ -134,7 +134,7 @@ public class CreateFromNames extends VBox{
         if (fileContent != null) {
             for (String name : names) {
                 String fileContentWithName = fileContent.replace("{class_name}", name);
-                File outputFile = new File(outputPathLable.getText(), name + ".java");
+                File outputFile = new File(outputPathLabel.getText(), name + ".java");
 
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                     writer.write(fileContentWithName);
@@ -162,7 +162,7 @@ public class CreateFromNames extends VBox{
             fileContent = fileContent.replace("implements {interface}", interfacesString.isEmpty() ? "" : "implements " + interfacesString);
             for (String name : names) {
                 String fileContentWithName = fileContent.replace("{class_name}", name);
-                File outputFile = new File(outputPathLable.getText(), name + ".java");
+                File outputFile = new File(outputPathLabel.getText(), name + ".java");
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                     writer.write(fileContentWithName);
                 } catch (IOException eException) {

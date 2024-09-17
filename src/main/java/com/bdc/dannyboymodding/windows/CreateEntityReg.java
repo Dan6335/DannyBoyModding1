@@ -41,16 +41,16 @@ public class CreateEntityReg extends VBox {
         outputPathLabelText.setFill(Color.WHITE);
         outputPathLabelText.setStyle("-fx-font-size: 14px;");
 
-        outputPathLable.setText("Select output folder");
-        outputPathLable.setStyle("-fx-background-color: #2e2e2e; -fx-text-fill: white;");
-        outputPathLable.setPrefWidth(225);
-        outputPathLable.setPrefHeight(20);
-        outputPathLable.setAlignment(Pos.CENTER);
+        outputPathLabel.setText("Select output folder");
+        outputPathLabel.setStyle("-fx-background-color: #2e2e2e; -fx-text-fill: white;");
+        outputPathLabel.setPrefWidth(225);
+        outputPathLabel.setPrefHeight(20);
+        outputPathLabel.setAlignment(Pos.CENTER);
 
         BrowseButton browseButton = new BrowseButton("Browse...");
         OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0, 12);
 
-        outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLable, browseButton);
+        outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLabel, browseButton);
 
         Button generateButton = new Button("Generate EntityReg.txt");
         generateButton.setOnAction(e -> generateEntityRegFile());
@@ -64,7 +64,7 @@ public class CreateEntityReg extends VBox {
     }
 
     private void generateEntityRegFile() {
-        String outputPath = outputPathLable.getText();
+        String outputPath = outputPathLabel.getText();
         if (outputPath == null || outputPath.isEmpty() || "Select output folder".equals(outputPath)) {
             showAlert(Alert.AlertType.ERROR, "Error", "Please select a valid output folder.");
             return;
@@ -109,7 +109,7 @@ public class CreateEntityReg extends VBox {
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Entity Registry.");
         successAlert.setOnHidden(evt -> {
-            outputPathLable.setText("Select output folder");
+            outputPathLabel.setText("Select output folder");
             selectedClassNames.clear();
         });
         successAlert.showAndWait();
