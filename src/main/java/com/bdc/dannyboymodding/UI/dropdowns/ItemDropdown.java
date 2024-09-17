@@ -1,5 +1,6 @@
 package com.bdc.dannyboymodding.UI.dropdowns;
 
+import com.bdc.dannyboymodding.utils.WindowUtils;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -20,6 +21,8 @@ public class ItemDropdown extends VBox {
 
             styleDropdownButton(createItemModels);
             styleDropdownButton(createItemReg);
+
+            createItemModels.setOnAction(e -> WindowUtils.showCreateItemModels());
 
             this.getChildren().addAll(createItemModels, createItemReg);
             this.setMaxWidth(160);

@@ -2,6 +2,8 @@ package com.bdc.dannyboymodding.windows;
 
 import com.bdc.dannyboymodding.UI.buttons.BrowseButton;
 import com.bdc.dannyboymodding.UI.buttons.OutputPathBox;
+import com.bdc.dannyboymodding.utils.AppUtils;
+import com.bdc.dannyboymodding.utils.NewInsets;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -52,19 +54,19 @@ public class CreateFromNames extends VBox{
         entityTypeComboBox.getItems().addAll("JurassiCraft Dinosaur", "Bluedude Dragons Dragon", "Custom Entity(WIP)");
         entityTypeComboBox.setPrefWidth(300);
         dropdownBox.getChildren().addAll(dropdownLabel, entityTypeComboBox);
-        VBox.setMargin(dropdownBox, new Insets(-10, 0, 0, 0));
+        VBox.setMargin(dropdownBox, new NewInsets(-10, 0, 0, 0));
 
-        HBox inputBox = new HBox();
-        inputBox.setSpacing(4);
-        inputBox.setAlignment(Pos.CENTER);
-        VBox.setMargin(inputBox, new Insets(-10, 0, 0, -52));
+        HBox namesBox = new HBox();
+        namesBox.setSpacing(4);
+        namesBox.setAlignment(Pos.CENTER);
+        VBox.setMargin(namesBox, new NewInsets(-10, 0, 0, -52));
         Text label = new Text("Names (comma-separated):");
         label.setFill(Color.WHITE);
         label.setStyle("-fx-font-size: 14px;");
         nameField = new TextField();
         nameField.setPromptText("Enter names here");
         nameField.setPrefWidth(300);
-        inputBox.getChildren().addAll(label, nameField);
+        namesBox.getChildren().addAll(label, nameField);
 
         OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0, 4);
 
@@ -86,7 +88,12 @@ public class CreateFromNames extends VBox{
         generateClassesButton.setPrefWidth(300);
         generateClassesButton.setOnAction(e -> generateClasses());
         generateClassesButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
-        this.getChildren().addAll(topSection, dropdownBox, inputBox, outputPathBox, generateClassesButton);
+
+        VBox.setMargin(dropdownBox, new NewInsets(-10, 0, 0, -50));
+        VBox.setMargin(namesBox, new NewInsets(-10, 0, 0, -100));
+        VBox.setMargin(outputPathBox, new NewInsets(-10, 0, 0, -5));
+        VBox.setMargin(generateClassesButton, new NewInsets(-10, 0, 0, 0));
+        this.getChildren().addAll(topSection, dropdownBox, namesBox, outputPathBox, generateClassesButton);
     }
 
     private void generateClasses() {
@@ -112,15 +119,9 @@ public class CreateFromNames extends VBox{
         }
     }
 
-    private String toPascalCase(String name) {
-        return Arrays.stream(name.split("\\s+"))
-                .map(part -> Character.toUpperCase(part.charAt(0)) + part.substring(1).toLowerCase())
-                .collect(Collectors.joining());
-    }
-
     private void generateJurassiCraftClasses() {
         String fileContent = loadResourceFile("JurassiCraftDinoCode.txt");
-        List<String> names = Arrays.stream(nameField.getText().split(",")).map(String::trim).map(this::toPascalCase).toList();
+        List<String> names = Arrays.stream(nameField.getText().split(",")).map(String::trim).map(AppUtils::toPascalCase).toList();
 
         if (fileContent != null) {
             for (String name : names) {
@@ -139,7 +140,7 @@ public class CreateFromNames extends VBox{
 
     private void generateBluedudeDragonsClasses(boolean projDragon, boolean tamableDragon, boolean ridableDragon, boolean breathDragon, boolean undergroundDragon, boolean fearWater) {
         String fileContent = loadResourceFile("BluedudeDragonsDragon.txt");
-        List<String> names = Arrays.stream(nameField.getText().split(",")).map(String::trim).map(this::toPascalCase).toList();
+        List<String> names = Arrays.stream(nameField.getText().split(",")).map(String::trim).map(AppUtils::toPascalCase).toList();
         if (fileContent != null) {
             List<String> interfaces = new ArrayList<>();
             if (projDragon) interfaces.add("IProjDragon");

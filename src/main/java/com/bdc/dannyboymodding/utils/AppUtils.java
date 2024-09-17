@@ -17,6 +17,7 @@ import javafx.stage.Window;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -108,5 +109,11 @@ public class AppUtils {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.showAndWait();
+    }
+
+    public static String toPascalCase(String name) {
+        return Arrays.stream(name.split("\\s+"))
+                .map(part -> Character.toUpperCase(part.charAt(0)) + part.substring(1).toLowerCase())
+                .collect(Collectors.joining());
     }
 }

@@ -4,6 +4,7 @@ import com.bdc.dannyboymodding.UI.buttons.BrowseButton;
 import com.bdc.dannyboymodding.UI.buttons.OutputPathBox;
 import com.bdc.dannyboymodding.UI.buttons.SelectFilesButton;
 import com.bdc.dannyboymodding.utils.FileTypes;
+import com.bdc.dannyboymodding.utils.NewInsets;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -47,7 +48,7 @@ public class CreateEntityReg extends VBox {
         outputPathLable.setAlignment(Pos.CENTER);
 
         BrowseButton browseButton = new BrowseButton("Browse...");
-        OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0, 4);
+        OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0, 12);
 
         outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLable, browseButton);
 
@@ -56,7 +57,7 @@ public class CreateEntityReg extends VBox {
         generateButton.setPrefWidth(300);
         generateButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
 
-        VBox.setMargin(outputPathBox, new Insets(10, 0, 0, 0));
+        VBox.setMargin(outputPathBox, new NewInsets(10, 90, 0, 0));
         VBox.setMargin(generateButton, new Insets(10, 0, 0, 0));
 
         this.getChildren().addAll(topSection, outputPathBox, generateButton);
