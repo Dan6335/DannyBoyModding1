@@ -8,21 +8,21 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-import java.io.*;
-import java.util.stream.Collectors;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import static com.bdc.dannyboymodding.utils.AppUtils.*;
 
-public class CreateEntityReg {
-    public VBox getView() {
-        VBox content = new VBox(20);
-        content.setPadding(new Insets(20));
-        content.setAlignment(Pos.CENTER);
+public class CreateEntityReg extends VBox {
+    public CreateEntityReg() {
+        this.setPadding(new Insets(20));
+        this.setAlignment(Pos.CENTER);
 
         Text title = new Text("Create Bluedude Dragons Dragon Registry:");
         title.setFill(Color.web("#1e90ff"));
@@ -50,8 +50,7 @@ public class CreateEntityReg {
         generateButton.setPrefWidth(300);
         generateButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
 
-        content.getChildren().addAll(title, selectFilesButton, outputPathBox, generateButton);
-        return content;
+        this.getChildren().addAll(title, selectFilesButton, outputPathBox, generateButton);
     }
 
     private void generateEntityRegFile() {
@@ -93,29 +92,5 @@ public class CreateEntityReg {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to write file: " + outputFile.getAbsolutePath());
         }
-    }
-
-    private String loadResourceFile(String pFileName) {
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(codesDir + pFileName);
-        if (inputStream == null) {
-            System.err.println("Resource file not found: " + pFileName);
-            showAlert(Alert.AlertType.ERROR, "Error", "Resource file not found: " + pFileName);
-            return null;
-        }
-
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            return reader.lines().collect(Collectors.joining(System.lineSeparator()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to read resource file: " + pFileName);
-            return null;
-        }
-    }
-
-    private void showAlert(Alert.AlertType pType, String pTitle, String pMessage) {
-        Alert alert = new Alert(pType, pMessage, ButtonType.OK);
-        alert.setTitle(pTitle);
-        alert.setHeaderText(null);
-        alert.showAndWait();
     }
 }

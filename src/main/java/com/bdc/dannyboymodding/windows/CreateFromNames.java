@@ -13,25 +13,26 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.bdc.dannyboymodding.utils.AppUtils.codesDir;
-import static com.bdc.dannyboymodding.utils.AppUtils.outputPathLable;
+import static com.bdc.dannyboymodding.utils.AppUtils.*;
 
-public class CreateFromNames {
-    private TextField nameField;
-    private ComboBox<String> entityTypeComboBox;
+public class CreateFromNames extends VBox{
+    private final TextField nameField;
+    private final ComboBox<String> entityTypeComboBox;
 
-    public VBox getView() {
-        VBox content = new VBox();
-        content.setPadding(new Insets(20));
-        content.setSpacing(30); // Space between elements
-        content.setStyle("-fx-background-color: #1c1c1c;");
-        content.setAlignment(Pos.TOP_CENTER); // Align everything to the top-center
+    public CreateFromNames() {
+        this.setPadding(new Insets(20));
+        this.setSpacing(30); // Space between elements
+        this.setStyle("-fx-background-color: #1c1c1c;");
+        this.setAlignment(Pos.TOP_CENTER); // Align everything to the top-center
         Text title = new Text("Create From Names:");
         title.setFill(Color.web("#1e90ff"));
         title.setStyle("-fx-font-size: 24px;");
@@ -85,8 +86,7 @@ public class CreateFromNames {
         generateClassesButton.setPrefWidth(300);
         generateClassesButton.setOnAction(e -> generateClasses());
         generateClassesButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
-        content.getChildren().addAll(topSection, dropdownBox, inputBox, outputPathBox, generateClassesButton);
-        return content;
+        this.getChildren().addAll(topSection, dropdownBox, inputBox, outputPathBox, generateClassesButton);
     }
 
     private void generateClasses() {
@@ -142,10 +142,10 @@ public class CreateFromNames {
         List<String> names = Arrays.stream(nameField.getText().split(",")).map(String::trim).map(this::toPascalCase).toList();
         if (fileContent != null) {
             List<String> interfaces = new ArrayList<>();
-            if (projDragon) interfaces.add("ProjDragon");
-            if (tamableDragon) interfaces.add("TamableDragon");
-            if (ridableDragon) interfaces.add("RidableDragon");
-            if (breathDragon) interfaces.add("BreathDragon");
+            if (projDragon) interfaces.add("IProjDragon");
+            if (tamableDragon) interfaces.add("IDragonTamable");
+            if (ridableDragon) interfaces.add("IRidableDragon");
+            if (breathDragon) interfaces.add("IBreathDragon");
             if (undergroundDragon) interfaces.add("IUndergroundDragon");
             if (fearWater) interfaces.add("IFearWater");
 
@@ -192,29 +192,5 @@ public class CreateFromNames {
         Scene scene = new Scene(vbox);
         dialog.setScene(scene);
         dialog.showAndWait();
-    }
-
-    private String loadResourceFile(String fileName) {
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(codesDir + fileName);
-        if (inputStream == null) {
-            System.err.println("Resource file not found: " + fileName);
-            showAlert(Alert.AlertType.ERROR, "Error", "Resource file not found: " + fileName);
-            return null;
-        }
-
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            return reader.lines().collect(Collectors.joining(System.lineSeparator()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error", "Failed to read resource file: " + fileName);
-            return null;
-        }
-    }
-
-    private void showAlert(Alert.AlertType type, String title, String message) {
-        Alert alert = new Alert(type, message, ButtonType.OK);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.showAndWait();
     }
 }

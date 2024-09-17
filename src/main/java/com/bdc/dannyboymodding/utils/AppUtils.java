@@ -5,7 +5,9 @@ import com.bdc.dannyboymodding.UI.dropdowns.EntityDropdown;
 import com.bdc.dannyboymodding.UI.dropdowns.ItemDropdown;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -13,9 +15,10 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class AppUtils {
@@ -40,7 +43,7 @@ public class AppUtils {
         button.setPrefHeight(25);
         button.setBackground(new Background(new BackgroundFill(Color.web("#3e3e3e"), CornerRadii.EMPTY, Insets.EMPTY)));
         button.setTextFill(Color.WHITE);
-        button.setStyle("-fx-font-size: 12px; -fx-cursor: hand; -fx-alignment: center-left;"); // Further reduced font size
+        button.setStyle("-fx-font-size: 12px; -fx-cursor: hand; -fx-alignment: center-left;");
         button.setOnMouseEntered(e -> button.setBackground(new Background(new BackgroundFill(Color.web("#4e4e4e"), CornerRadii.EMPTY, Insets.EMPTY))));
         button.setOnMouseExited(e -> button.setBackground(new Background(new BackgroundFill(Color.web("#3e3e3e"), CornerRadii.EMPTY, Insets.EMPTY))));
     }
@@ -81,5 +84,29 @@ public class AppUtils {
             StackPane.setAlignment(dropdown, Pos.TOP_LEFT);
             StackPane.setMargin(dropdown, margin);
         }
+    }
+
+    public static String loadResourceFile(String pFileName) {
+        InputStream inputStream = AppUtils.class.getClassLoader().getResourceAsStream(codesDir + pFileName);
+        if (inputStream == null) {
+            System.err.println("Resource file not found: " + pFileName);
+            showAlert(Alert.AlertType.ERROR, "Error", "Resource file not found: " + pFileName);
+            return null;
+        }
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            return reader.lines().collect(Collectors.joining(System.lineSeparator()));
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to read resource file: " + pFileName);
+            return null;
+        }
+    }
+
+    public static void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type, message, ButtonType.OK);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.showAndWait();
     }
 }
