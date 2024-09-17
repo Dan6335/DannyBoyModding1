@@ -30,6 +30,12 @@ public class CreateEntityReg extends VBox {
 
         SelectFilesButton selectFilesButton = new SelectFilesButton(FileTypes.JAVA, "Select Files");
 
+        VBox topSection = new VBox();
+        topSection.setSpacing(90);
+        topSection.setAlignment(Pos.TOP_CENTER);
+        topSection.getChildren().addAll(title, selectFilesButton);
+        VBox.setMargin(topSection, new Insets(-50, 0, 0, 0));
+
         Text outputPathLabelText = new Text("Output Path:");
         outputPathLabelText.setFill(Color.WHITE);
         outputPathLabelText.setStyle("-fx-font-size: 14px;");
@@ -41,7 +47,7 @@ public class CreateEntityReg extends VBox {
         outputPathLable.setAlignment(Pos.CENTER);
 
         BrowseButton browseButton = new BrowseButton("Browse...");
-        OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0);
+        OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0, 4);
 
         outputPathBox.getChildren().addAll(outputPathLabelText, outputPathLable, browseButton);
 
@@ -50,7 +56,10 @@ public class CreateEntityReg extends VBox {
         generateButton.setPrefWidth(300);
         generateButton.setStyle("-fx-background-color: #3788ca; -fx-text-fill: white;");
 
-        this.getChildren().addAll(title, selectFilesButton, outputPathBox, generateButton);
+        VBox.setMargin(outputPathBox, new Insets(10, 0, 0, 0));
+        VBox.setMargin(generateButton, new Insets(10, 0, 0, 0));
+
+        this.getChildren().addAll(topSection, outputPathBox, generateButton);
     }
 
     private void generateEntityRegFile() {

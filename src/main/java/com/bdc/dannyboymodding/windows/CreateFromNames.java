@@ -40,17 +40,17 @@ public class CreateFromNames extends VBox{
         topSection.setSpacing(10);
         topSection.setAlignment(Pos.TOP_CENTER);
         topSection.getChildren().addAll(title);
-        VBox.setMargin(topSection, new Insets(100, 0, 0, 0)); // Margin: top, right, bottom, left
+        VBox.setMargin(topSection, new Insets(100, 0, 0, 0));
 
         HBox dropdownBox = new HBox();
         dropdownBox.setSpacing(10);
-        dropdownBox.setAlignment(Pos.CENTER); // Center the dropdown box horizontally
+        dropdownBox.setAlignment(Pos.CENTER);
         Text dropdownLabel = new Text("Select Entity Type:");
         dropdownLabel.setFill(Color.WHITE);
         dropdownLabel.setStyle("-fx-font-size: 14px;");
         entityTypeComboBox = new ComboBox<>();
         entityTypeComboBox.getItems().addAll("JurassiCraft Dinosaur", "Bluedude Dragons Dragon", "Custom Entity(WIP)");
-        entityTypeComboBox.setPrefWidth(300); // Set a preferred width for the dropdown
+        entityTypeComboBox.setPrefWidth(300);
         dropdownBox.getChildren().addAll(dropdownLabel, entityTypeComboBox);
         VBox.setMargin(dropdownBox, new Insets(-10, 0, 0, 0));
 
@@ -66,7 +66,7 @@ public class CreateFromNames extends VBox{
         nameField.setPrefWidth(300);
         inputBox.getChildren().addAll(label, nameField);
 
-        OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0);
+        OutputPathBox outputPathBox = new OutputPathBox(-10, -43, 0, 0, 4);
 
         Text outputPathLabelText = new Text("Output Path:");
         outputPathLabelText.setFill(Color.WHITE);
