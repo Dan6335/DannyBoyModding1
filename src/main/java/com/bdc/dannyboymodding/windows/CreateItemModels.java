@@ -108,26 +108,23 @@ public class CreateItemModels extends VBox {
 
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                     writer.write(updatedContent);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (IOException eException) {
+                    eException.printStackTrace();
                     showAlert(Alert.AlertType.ERROR, "Error", "Failed to write file: " + outputFile.getAbsolutePath());
                 }
             }
         }
 
-        // Show success alert with OK button
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
         successAlert.setTitle("Success");
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Entity Class.");
 
-        // When OK is pressed, reset the fields
         successAlert.setOnHidden(evt -> {
             outputPathLable.setText("Select output folder");
             nameField.clear();
             modIdField.clear();
         });
-
         successAlert.showAndWait();
     }
 }

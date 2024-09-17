@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.bdc.dannyboymodding.utils.AppUtils.*;
 
@@ -103,7 +102,6 @@ public class CreateFromNames extends VBox{
             showAlert(Alert.AlertType.ERROR, "Error", "Please select a valid output folder.");
             return;
         }
-
         switch (selectedEntityType) {
             case "JurassiCraft Dinosaur":
                 generateJurassiCraftClasses();
@@ -117,20 +115,15 @@ public class CreateFromNames extends VBox{
                 showAlert(Alert.AlertType.ERROR, "Error", "Please select a valid entity type.");
                 break;
         }
-
-        // Show success alert with OK button
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
         successAlert.setTitle("Success");
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Entity Class.");
-
-        // When OK is pressed, reset the fields
         successAlert.setOnHidden(evt -> {
             outputPathLable.setText("Select output folder");
             nameField.clear();
             entityTypeComboBox.setValue(null);
         });
-
         successAlert.showAndWait();
     }
 
@@ -145,8 +138,8 @@ public class CreateFromNames extends VBox{
 
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                     writer.write(fileContentWithName);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (IOException eException) {
+                    eException.printStackTrace();
                     showAlert(Alert.AlertType.ERROR, "Error", "Failed to write file: " + outputFile.getAbsolutePath());
                 }
             }
@@ -172,8 +165,8 @@ public class CreateFromNames extends VBox{
                 File outputFile = new File(outputPathLable.getText(), name + ".java");
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
                     writer.write(fileContentWithName);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (IOException eException) {
+                    eException.printStackTrace();
                     showAlert(Alert.AlertType.ERROR, "Error", "Failed to write file: " + outputFile.getAbsolutePath());
                 }
             }

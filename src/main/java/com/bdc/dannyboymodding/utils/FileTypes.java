@@ -4,6 +4,7 @@ public enum FileTypes {
     JAVA("Java Files", "*.java"),
     TXT("Text Files", "*.txt"),
     XML("XML Files", "*.xml"),
+    PNG("PNG Files", "*.png"),
     ALL("All Files", "*.*");
 
     private final String description;

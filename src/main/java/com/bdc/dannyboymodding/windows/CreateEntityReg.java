@@ -98,24 +98,20 @@ public class CreateEntityReg extends VBox {
                 writer.newLine();
                 writer.newLine();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException eException) {
+            eException.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to write file: " + outputFile.getAbsolutePath());
             return;
         }
 
-        // Show success alert with OK button
         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
         successAlert.setTitle("Success");
         successAlert.setHeaderText(null);
         successAlert.setContentText("Successfully Generated Entity Registry.");
-
-        // When OK is pressed, reset the fields
         successAlert.setOnHidden(evt -> {
             outputPathLable.setText("Select output folder");
-            selectedClassNames.clear();  // Assuming selectedClassNames is a list of selected files/classes
+            selectedClassNames.clear();
         });
-
         successAlert.showAndWait();
     }
 }
