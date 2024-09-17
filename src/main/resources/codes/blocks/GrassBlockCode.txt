@@ -1,9 +1,10 @@
-{   "parent": "block/block",
+{
+"parent": "block/block",
   "textures": {
     "particle": "block/dirt",
     "bottom": "block/dirt",
-    "top": "${MOD_ID}:block/${TEXTURE_NAME}",
-    "side": "${MOD_ID}:block/${TEXTURE_NAME}"
+    "top": "{mod_id}:block/{texture_name}",
+    "side": "{mod_id}:block/{texture_name}"
   },
   "elements": [
     {   "from": [ 0, 0, 0 ],

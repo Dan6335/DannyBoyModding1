@@ -120,4 +120,13 @@ public class AppUtils {
     public static String toLowerCaseWithUnderscores(String input) {
         return input.trim().toLowerCase().replaceAll("\\s+", "_");
     }
+
+    public static void writeToFile(File file, String content) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to write file: " + file.getAbsolutePath());
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.bdc.dannyboymodding.utils;
 
+import com.bdc.dannyboymodding.windows.CreateBlockModels;
 import com.bdc.dannyboymodding.windows.CreateEntityReg;
 import com.bdc.dannyboymodding.windows.CreateFromNames;
 import com.bdc.dannyboymodding.windows.CreateItemModels;
@@ -30,6 +31,14 @@ public class WindowUtils {
         BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
         StackPane dropdownContainer = (StackPane) root.getCenter();
         VBox content = new CreateItemModels();
+        dropdownContainer.getChildren().clear();
+        dropdownContainer.getChildren().add(content);
+    }
+
+    public static void showCreateBlockModels() {
+        BorderPane root = (BorderPane) primaryStage.getScene().getRoot();
+        StackPane dropdownContainer = (StackPane) root.getCenter();
+        VBox content = new CreateBlockModels();
         dropdownContainer.getChildren().clear();
         dropdownContainer.getChildren().add(content);
     }

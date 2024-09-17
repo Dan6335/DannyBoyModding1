@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/fence_side",
   "textures": {
-    "texture": "${MOD_ID}:block/${TEXTURE_NAME}"
+    "texture": "{mod_id}:block/{texture_name}"
   }
 }
